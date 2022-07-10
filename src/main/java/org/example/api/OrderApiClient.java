@@ -6,12 +6,11 @@ import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import io.restassured.response.ResponseBodyExtractionOptions;
 import org.example.pojo.Order;
 
 public class OrderApiClient{
     public static final String url = "http://qa-scooter.praktikum-services.ru";
-    public static String createOrderApi = "/api/v1/orders";
+    public static String mainOrderApi = "/api/v1/orders";
     public static String cancelOrderApi = "/api/v1/orders/cancel";
 
     private final Filter requestFilter = new RequestLoggingFilter();
@@ -31,7 +30,7 @@ public class OrderApiClient{
                 .contentType(ContentType.JSON)
                 .and()
                 .body(order)
-                .post(createOrderApi);
+                .post(mainOrderApi);
         track = response.then().extract().body().path("track");
         return response;
     }
@@ -46,5 +45,13 @@ public class OrderApiClient{
                 .queryParam("track", track)
                 .body("{\"track\": " + track + "}")
                 .put(cancelOrderApi);
+    }
+
+    public Response getOrders(){
+        return RestAssured
+                .with()
+                .filters(requestFilter, responseFiler)
+                .baseUri(url)
+                .get(mainOrderApi);
     }
 }

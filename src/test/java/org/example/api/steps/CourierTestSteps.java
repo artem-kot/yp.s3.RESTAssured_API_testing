@@ -1,11 +1,13 @@
-package org.example.api;
+package org.example.api.steps;
 
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
+import org.example.api.BaseTestData;
+import org.example.api.CourierApiClient;
 import org.example.pojo.Courier;
 import org.junit.Before;
 
-public class CourierTestSteps implements BaseTestData{
+public class CourierTestSteps implements BaseTestData {
 
     private CourierApiClient client;
     private Courier courier;

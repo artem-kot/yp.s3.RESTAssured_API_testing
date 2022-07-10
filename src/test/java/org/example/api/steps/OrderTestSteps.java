@@ -1,7 +1,8 @@
-package org.example.api;
+package org.example.api.steps;
 
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
+import org.example.api.OrderApiClient;
 import org.example.pojo.Courier;
 import org.example.pojo.Order;
 import org.example.pojo.OrderBuilder;
@@ -50,8 +51,8 @@ public class OrderTestSteps {
         order.setColor(null);
     }
 
-//    @Step("Remove courier")
-//    public Response removeCourier(){
-//        return client.removeCourier(courier);
-//    }
+    @Step("Get list of all orders")
+    public Response getOrders(){
+        return client.getOrders();
+    }
 }
