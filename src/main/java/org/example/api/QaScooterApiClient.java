@@ -24,7 +24,6 @@ public class QaScooterApiClient {
     }
 
     public Response createCourier(Courier courier){
-        System.out.println("-=-=-=CREATION.");
         return RestAssured
                 .with()
                 .filters(requestFilter, responseFiler)
@@ -36,7 +35,6 @@ public class QaScooterApiClient {
     }
 
     public Response loginCourier(Courier courier){
-        System.out.println("-=-=-=LOGIN.");
         return RestAssured
                 .with()
                 .filters(requestFilter, responseFiler)
@@ -48,7 +46,6 @@ public class QaScooterApiClient {
     }
 
     public String getCreatedCourierId(){
-        System.out.println("-=-=-=PARSING ID FROM LOGIN.");
         Integer id = loginCourier(courier)
                 .then()
                 .extract()
@@ -58,7 +55,6 @@ public class QaScooterApiClient {
     }
 
     public Response removeCourier(Courier courier){
-        System.out.println("-=-=-=REMOVAL.");
         String id = getCreatedCourierId();
         return RestAssured
                 .with()
