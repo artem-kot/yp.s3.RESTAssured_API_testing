@@ -13,6 +13,7 @@ public abstract class CourierTestSteps {
     public String courierCreatedErrorNotEnoughData = "Недостаточно данных для создания учетной записи";
     public String courierCreatedErrorDuplicate = "Этот логин уже используется. Попробуйте другой.";
     public String courierLoginErrorWrongCredentials = "Учетная запись не найдена";
+    public String courierLoginErrorNotEnoughData = "Недостаточно данных для входа";
 
     private QaScooterApiClient client;
     private Courier courier;
@@ -33,9 +34,14 @@ public abstract class CourierTestSteps {
         return client.loginCourier(courier);
     }
 
-    @Step("Prepare json courier object without login")
-    public void removeLogin(){
+    @Step("Modify json courier login")
+    public void changeCourierLoginValue(){
         courier.setLogin(null);
+    }
+
+    @Step("Modify json courier login")
+    public void changeCourierLoginValue(String newLogin){
+        courier.setLogin(newLogin);
     }
 
     @Step("Remove courier")
