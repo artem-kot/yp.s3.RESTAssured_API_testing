@@ -4,7 +4,7 @@ public class Courier {
     private String login;
     private String password;
     private String firstName;
-    private Long id;
+    private Integer id;
 
     public Courier(String login, String password, String firstName) {
         this.login = login;
@@ -17,18 +17,18 @@ public class Courier {
         this.password = password;
     }
 
-    public Courier(Long id) {
+    public Courier(Integer id) {
         this.id = id;
     }
 
     public Courier() {
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

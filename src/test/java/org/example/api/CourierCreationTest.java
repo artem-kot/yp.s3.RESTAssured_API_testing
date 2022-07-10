@@ -6,28 +6,30 @@ import org.example.pojo.Courier;
 import org.junit.Before;
 import org.junit.Test;
 
-public class CourierCreationTest {
+public class CourierCreationTest extends BaseTestData{
 
     private QaScooterApiClient client;
+    private Courier courier;
 
     @Before
     public void setup(){
-        client = new QaScooterApiClient();
+        courier = new Courier(courierLogin, courierPassword, courierFirstName);
+        client = new QaScooterApiClient(courier);
     }
+
 
     @Test
     public void createCourierTest(){
-        Courier courier = new Courier(client.login, client.password, client.firstName);
-        client.createCourier(courier)
-                .then().statusCode(201);
+        createCourier().then().statusCode(201);
+        removeCourier().then().statusCode(200);
     }
 
     @Step("Create courier")
-    public void createCourier(){
-        client.createCourier(new Courier(client.login, client.password, client.firstName));
+    public Response createCourier(){
+        return client.createCourier(courier);
     }
     @Step("Clean test data after the test")
-    public void removeCourier(){
-
+    public Response removeCourier(){
+        return client.removeCourier(courier);
     }
 }

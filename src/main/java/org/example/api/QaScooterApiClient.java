@@ -1,6 +1,9 @@
 package org.example.api;
 
 import io.restassured.RestAssured;
+import io.restassured.filter.Filter;
+import io.restassured.filter.log.RequestLoggingFilter;
+import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.http.ContentType;
 import org.example.pojo.Courier;
 import io.restassured.response.Response;
@@ -11,33 +14,59 @@ public class QaScooterApiClient {
     public static String loginCourierApi = "/api/v1/courier/login";
     public static String removeCourierApi = "/api/v1/courier/";
 
-    public String login = "JohnDoe";
-    public String password = "123";
-    public String firstName = "John";
+    private final Filter requestFilter = new RequestLoggingFilter();
+    private final Filter responseFiler = new ResponseLoggingFilter();
+
+    private Courier courier;
+
+    public QaScooterApiClient(Courier courier) {
+        this.courier = courier;
+    }
 
     public Response createCourier(Courier courier){
+        System.out.println("-=-=-=CREATION.");
         return RestAssured
                 .with()
+                .filters(requestFilter, responseFiler)
                 .baseUri(baseURI)
-                .accept(ContentType.JSON)
+                .contentType(ContentType.JSON)
+                .and()
+                .body(courier)
                 .post(createCourierApi);
     }
 
     public Response loginCourier(Courier courier){
+        System.out.println("-=-=-=LOGIN.");
         return RestAssured
                 .with()
+                .filters(requestFilter, responseFiler)
                 .baseUri(baseURI)
-                .accept(ContentType.JSON)
+                .contentType(ContentType.JSON)
                 .and()
                 .body(courier)
                 .post(loginCourierApi);
     }
 
+    public String getCreatedCourierId(){
+        System.out.println("-=-=-=PARSING ID FROM LOGIN.");
+        Integer id = loginCourier(courier)
+                .then()
+                .extract()
+                .body()
+                .path("id");
+        return id.toString();
+    }
+
     public Response removeCourier(Courier courier){
+        System.out.println("-=-=-=REMOVAL.");
+        String id = getCreatedCourierId();
         return RestAssured
                 .with()
+                .filters(requestFilter, responseFiler)
                 .baseUri(baseURI)
-                .accept(ContentType.JSON)
-                .delete(removeCourierApi + courier.getId().toString());
+                .contentType(ContentType.JSON)
+                .and()
+                .body("{\"id\": " + id + "}")
+                .delete(removeCourierApi + id);
     }
 }
