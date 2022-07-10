@@ -1,12 +1,25 @@
 package org.example.api;
 
-public interface BaseTestData {
-    public String courierLogin = "JohnDoe";
-    public String courierPassword = "123";
-    public String courierFirstName = "John";
+import java.util.Arrays;
+import java.util.List;
 
-    public String courierCreatedErrorNotEnoughData = "Недостаточно данных для создания учетной записи";
-    public String courierCreatedErrorDuplicate = "Этот логин уже используется. Попробуйте другой.";
-    public String courierLoginErrorWrongCredentials = "Учетная запись не найдена";
-    public String courierLoginErrorNotEnoughData = "Недостаточно данных для входа";
+public interface BaseTestData {
+    String courierLogin = "JohnDoe";
+    String courierPassword = "123";
+    String courierFirstName = "John";
+
+    String orderFirstName = "Jane";
+    String orderLastName = "Doe";
+    String orderAddress = "The Middle of Nowhere, -0 apt.";
+    int orderMetroStation = 7;
+    String orderPhone = "555-12-12";
+    int orderRentTime = 5;
+    String orderDeliveryDate = "2022-09-01";
+    String orderComment = "♥";
+    List<String> orderColor = Arrays.asList("BLACK", "GREY");
+
+    String courierCreatedErrorNotEnoughData = "Недостаточно данных для создания учетной записи";
+    String courierCreatedErrorDuplicate = "Этот логин уже используется. Попробуйте другой.";
+    String courierLoginErrorWrongCredentials = "Учетная запись не найдена";
+    String courierLoginErrorNotEnoughData = "Недостаточно данных для входа";
 }

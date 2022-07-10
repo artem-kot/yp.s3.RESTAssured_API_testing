@@ -17,7 +17,7 @@ public class CourierApiClient {
     private final Filter requestFilter = new RequestLoggingFilter();
     private final Filter responseFiler = new ResponseLoggingFilter();
 
-    private Courier courier;
+    private final Courier courier;
 
     public CourierApiClient(Courier courier) {
         this.courier = courier;

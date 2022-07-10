@@ -4,7 +4,6 @@ import io.qameta.allure.junit4.DisplayName;
 import org.example.api.steps.CourierTestSteps;
 import org.junit.Test;
 import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.notNullValue;
 
 public class CourierCreationTest extends CourierTestSteps {
 

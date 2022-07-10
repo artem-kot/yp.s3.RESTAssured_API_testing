@@ -3,7 +3,6 @@ package org.example.api;
 import io.qameta.allure.junit4.DisplayName;
 import org.example.api.steps.OrderTestSteps;
 import org.junit.Test;
-
 import static org.hamcrest.CoreMatchers.notNullValue;
 
 public class OrderListRequestingTest extends OrderTestSteps {

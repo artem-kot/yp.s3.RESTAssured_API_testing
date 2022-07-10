@@ -2,31 +2,30 @@ package org.example.api.steps;
 
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
+import org.example.api.BaseTestData;
 import org.example.api.OrderApiClient;
-import org.example.pojo.Courier;
 import org.example.pojo.Order;
 import org.example.pojo.OrderBuilder;
 import org.junit.Before;
-
 import java.util.Arrays;
 import java.util.List;
 
-public class OrderTestSteps {
+public class OrderTestSteps implements BaseTestData {
     private OrderApiClient client;
     private Order order;
 
     @Before
     public void setup(){
         order = new OrderBuilder()
-                .withFirstName("Jane")
-                .withLastName("Doe")
-                .withAddress("The Middle of Nowhere, -0 apt.")
-                .withMetroStation(7)
-                .withPhone("555-12-12")
-                .withRentTime(5)
-                .withDeliveryDate("2022-09-01")
-                .withComment("♥")
-                .withColor(Arrays.asList("BLACK", "GREY"))
+                .withFirstName(orderFirstName)
+                .withLastName(orderLastName)
+                .withAddress(orderAddress)
+                .withMetroStation(orderMetroStation)
+                .withPhone(orderPhone)
+                .withRentTime(orderRentTime)
+                .withDeliveryDate(orderDeliveryDate)
+                .withComment(orderComment)
+                .withColor(orderColor)
                 .build();
         client = new OrderApiClient(order);
     }

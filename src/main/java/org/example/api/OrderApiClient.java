@@ -17,9 +17,7 @@ public class OrderApiClient{
     private final Filter responseFiler = new ResponseLoggingFilter();
     private static Integer track;
 
-    private Order order;
     public OrderApiClient(Order order){
-        this.order = order;
     }
 
     public Response createOrder(Order order){
