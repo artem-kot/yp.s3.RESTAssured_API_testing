@@ -8,8 +8,8 @@ import io.restassured.http.ContentType;
 import org.example.pojo.Courier;
 import io.restassured.response.Response;
 
-public class QaScooterApiClient {
-    public static final String baseURI = "http://qa-scooter.praktikum-services.ru";
+public class CourierApiClient {
+    public static final String url = "http://qa-scooter.praktikum-services.ru";
     public static String createCourierApi = "/api/v1/courier";
     public static String loginCourierApi = "/api/v1/courier/login";
     public static String removeCourierApi = "/api/v1/courier/";
@@ -19,7 +19,7 @@ public class QaScooterApiClient {
 
     private Courier courier;
 
-    public QaScooterApiClient(Courier courier) {
+    public CourierApiClient(Courier courier) {
         this.courier = courier;
     }
 
@@ -27,7 +27,7 @@ public class QaScooterApiClient {
         return RestAssured
                 .with()
                 .filters(requestFilter, responseFiler)
-                .baseUri(baseURI)
+                .baseUri(url)
                 .contentType(ContentType.JSON)
                 .and()
                 .body(courier)
@@ -38,7 +38,7 @@ public class QaScooterApiClient {
         return RestAssured
                 .with()
                 .filters(requestFilter, responseFiler)
-                .baseUri(baseURI)
+                .baseUri(url)
                 .contentType(ContentType.JSON)
                 .and()
                 .body(courier)
@@ -59,7 +59,7 @@ public class QaScooterApiClient {
         return RestAssured
                 .with()
                 .filters(requestFilter, responseFiler)
-                .baseUri(baseURI)
+                .baseUri(url)
                 .contentType(ContentType.JSON)
                 .and()
                 .body("{\"id\": " + id + "}")

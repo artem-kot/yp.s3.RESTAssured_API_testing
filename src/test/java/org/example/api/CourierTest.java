@@ -2,10 +2,13 @@ package org.example.api;
 
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.notNullValue;
 
+//@RunWith(Parameterized.class)
 public class CourierTest extends CourierTestSteps {
 
     @Test

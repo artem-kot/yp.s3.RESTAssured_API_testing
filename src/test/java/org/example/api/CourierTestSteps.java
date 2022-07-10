@@ -5,23 +5,15 @@ import io.restassured.response.Response;
 import org.example.pojo.Courier;
 import org.junit.Before;
 
-public abstract class CourierTestSteps {
-    public String courierLogin = "JohnDoe";
-    public String courierPassword = "123";
-    public String courierFirstName = "John";
+public class CourierTestSteps implements BaseTestData{
 
-    public String courierCreatedErrorNotEnoughData = "Недостаточно данных для создания учетной записи";
-    public String courierCreatedErrorDuplicate = "Этот логин уже используется. Попробуйте другой.";
-    public String courierLoginErrorWrongCredentials = "Учетная запись не найдена";
-    public String courierLoginErrorNotEnoughData = "Недостаточно данных для входа";
-
-    private QaScooterApiClient client;
+    private CourierApiClient client;
     private Courier courier;
 
     @Before
     public void setup(){
         courier = new Courier(courierLogin, courierPassword, courierFirstName);
-        client = new QaScooterApiClient(courier);
+        client = new CourierApiClient(courier);
     }
 
     @Step("Create courier")
