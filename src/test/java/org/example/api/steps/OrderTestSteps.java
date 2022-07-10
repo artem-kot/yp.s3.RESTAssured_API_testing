@@ -3,7 +3,6 @@ package org.example.api.steps;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import org.example.api.OrderApiClient;
-import org.example.pojo.Courier;
 import org.example.pojo.Order;
 import org.example.pojo.OrderBuilder;
 import org.junit.Before;
