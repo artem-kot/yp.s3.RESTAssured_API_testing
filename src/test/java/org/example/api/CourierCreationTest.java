@@ -11,7 +11,6 @@ public class CourierCreationTest extends CourierTestSteps {
     @DisplayName("Courier Creation: courier can be created")
     public void createCourierTest(){
         createCourier().then().statusCode(201).assertThat().body("ok", equalTo(true));
-        removeCourier().then().statusCode(200);
     }
 
     @Test
@@ -20,7 +19,6 @@ public class CourierCreationTest extends CourierTestSteps {
         createCourier().then().statusCode(201);
         createCourier().then().statusCode(409)
                 .assertThat().body("message", equalTo(courierCreatedErrorDuplicate));
-        removeCourier().then().statusCode(200);
     }
 
     @Test

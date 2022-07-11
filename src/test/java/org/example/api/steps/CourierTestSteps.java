@@ -5,6 +5,7 @@ import io.restassured.response.Response;
 import org.example.api.BaseTestData;
 import org.example.api.CourierApiClient;
 import org.example.pojo.Courier;
+import org.junit.After;
 import org.junit.Before;
 
 public class CourierTestSteps implements BaseTestData {
@@ -41,5 +42,14 @@ public class CourierTestSteps implements BaseTestData {
     @Step("Remove courier")
     public Response removeCourier(){
         return client.removeCourier(courier);
+    }
+
+    @After
+    public void teardown() throws Exception {
+        try {
+            removeCourier();
+        } catch (NullPointerException exception) {
+            System.out.println("Removal of a courier is not needed as no courier was created in current session");
+        }
     }
 }

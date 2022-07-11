@@ -33,6 +33,5 @@ public class OrderCreationTest extends OrderTestSteps {
     public void createOrderTest(){
         changeColorValue(colors);
         createOrder().then().statusCode(201).assertThat().body("track", notNullValue());
-        cancelOrder().then().statusCode(200);
     }
 }

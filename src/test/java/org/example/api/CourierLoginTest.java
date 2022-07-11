@@ -14,7 +14,6 @@ public class CourierLoginTest extends CourierTestSteps {
         createCourier().then().statusCode(201);
         loginCourier().then().statusCode(200)
                 .assertThat().body("id", notNullValue());
-        removeCourier();
     }
 
     @Test
@@ -32,6 +31,5 @@ public class CourierLoginTest extends CourierTestSteps {
         loginCourier().then().statusCode(400)
                 .assertThat().body("message", equalTo(courierLoginErrorNotEnoughData));
         changeCourierLoginValue(courierLogin);
-        removeCourier().then().statusCode(200);
     }
 }
