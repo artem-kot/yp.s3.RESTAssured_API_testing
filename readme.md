@@ -1,6 +1,6 @@
 # # Yandex.Praktikum 3rd Sprint's Project. "QA-Scooter"
 
-A set of automated API tests for ["Самокат"](https://qa-scooter.praktikum-services.ru/).
+A set of automated API tests for ["Scooter"](https://qa-scooter.praktikum-services.ru/).
 Project's API design is stored in the document: ["Ez-scooter"](https://qa-scooter.praktikum-services.ru/docs/). 
 
 Postman-collection, used while working on the project: [Sprint_3](https://www.getpostman.com/collections/90c27015076e8ed5d4ed).
