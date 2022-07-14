@@ -1,51 +1,56 @@
-# Финальный проект 3-го спринта курса Яндекс.Практикум "Самокат"
+# # Yandex.Praktikum 3rd Sprint's Project. "QA-Scooter"
 
-Набор автоматизированных сценариев для тестирования API проекта ["Самокат"](https://qa-scooter.praktikum-services.ru/).
-Дизайн API описан в документе: ["Ez-scooter"](https://qa-scooter.praktikum-services.ru/docs/). 
+A set of automated API tests for ["Самокат"](https://qa-scooter.praktikum-services.ru/).
+Project's API design is stored in the document: ["Ez-scooter"](https://qa-scooter.praktikum-services.ru/docs/). 
 
-Postman-коллекция, использованная при работе над проектом: [Sprint_3](https://www.getpostman.com/collections/90c27015076e8ed5d4ed).
+Postman-collection, used while working on the project: [Sprint_3](https://www.getpostman.com/collections/90c27015076e8ed5d4ed).
 
-## Содержимое проекта
+## Project's Contents
 
-Проект состоит из 4-х основных частей.
-1. main/java/org.example.pojo - объекты, используемые для генерации сообщений в реквестах и для парсинга респонзов.
-2. main/java/org.example.api - модели API, применяемых в проекте. Описаны 2 основных интерфейса, используемых для работы с объектами "Courier" и "Order": **CourierApiClient** и **OrderApiClient**, соответственно
-3. test/java/org.example.api.steps - методы с аннотациями @Step, используемые для взаимодействия тест-кейсов с API-клиентами. 
-4. test/java/org.example.api - тест кейсы, оформленные согласно заданию (отдельный класс на каждый тестируемый эндпоинт).
+Project consits of 4 main parts:
+1. main/java/org.example.pojo - plain old java objects, used to generate request messages and parse response messages using serialization.
+2. main/java/org.example.api - project API models. 2 main interfaces are created to work with "Courier" and "Order" pojo: **CourierApiClient** и **OrderApiClient**.
+3. test/java/org.example.api.steps - methods with a @Step annotation, used to interact with API clients during test execution. 
+4. test/java/org.example.api - test cases, separated by API's according to the initial study project's task.
 
-### Сценарии тестирования
+### Test Scenarios
 
-При подготовке проекта были подготовлены только тестовые сценарии основного задания.
+Only main study project tasks were completed.
 
-**Сценарии основного задания**
-* Создание курьера: **CourierCreationTest**
-  * курьера можно создать;
-  * нельзя создать двух одинаковых курьеров;
-  * чтобы создать курьера, нужно передать в ручку все обязательные поля.
-* Логин курьера: **CourierLoginTest**
-  * курьер может авторизоваться;
-  * для авторизации нужно передать все обязательные поля;
-  * если авторизоваться под несуществующим пользователем, запрос возвращает ошибку;
-* Создание заказа: **OrderCreationTest** - тест с **параметризацией**.
-  * можно указать один из цветов — BLACK или GREY;
-  * можно указать оба цвета;
-  * можно совсем не указывать цвет;
-* Список заказов: **OrderListRequestingTest**
-  * в тело ответа возвращается список заказов.
+**Main tasks**
+* Creation of a courier instance: **CourierCreationTest**
+  * it is possible to create a courier;
+  * it's impossible to create two identical couriers;
+  * you have to provide all mandatory values to create a courier.
+* Courier login: **CourierLoginTest**
+  * courier can log in;
+  * you have to provide all mandatory values to log in;
+  * log in attempt with wrong credentials provides an error;
+* Order creation: **OrderCreationTest** - **parameterized** test suite.
+  * it is possible to specify one of the colors — BLACK or GREY;
+  * it is possible to specify both colors;
+  * it is possible to not specify any color;
+* List of orders: **OrderListRequestingTest**
+  * it is possible to get the list of orders.
 
-## Запуск автотестов
+## Tests Execution
 
-Ниже описан порядок подготовки локальной среды к запуску тестов.
+Local environment preparation instruction is shared below.
 
-### Пререквизиты
+### Prerequisites
 
-Подготовка локальной среды осуществляется согласно теме курса ["Локальная среда разработки"](https://practicum.yandex.ru/learn/qa-automation-engineer-java/courses/e2bf18c2-97c5-43f8-af20-80c52142e6f2/sprints/16356/topics/a1b6de5a-dd0d-418b-97ea-02258aa40b07/lessons/054c3a94-f4ee-46a4-8a5b-b5d373b9ada3/).
-После подготовки локальной среды необходимо скачать проект, разместить его в локальном репозитории и запустить, например, используя IDE IntelliJ IDEA.
+Prepare local environment according to the guide: ["Local development env"](https://practicum.yandex.ru/learn/qa-automation-engineer-java/courses/e2bf18c2-97c5-43f8-af20-80c52142e6f2/sprints/16356/topics/a1b6de5a-dd0d-418b-97ea-02258aa40b07/lessons/054c3a94-f4ee-46a4-8a5b-b5d373b9ada3/)
+Download the project, store in local repository and execute, using IDE IntelliJ IDEA.
 
-## Автор
+### Additional Information
 
-* **Артём Кот**
+Abstract class "BaseTest" contains WebDriver settings used for test execution.
+Application contains a bug preventing positive order flow execution in Chrome browser. It is recommended to install [YandexDriver](https://github.com/yandex/YandexDriver) for tests execution.
 
-## Благодарности
+## Author
 
-* Выражаю благодарность Джону Окороукву за демонстрацию архитектурных паттернов при тестировани API в ходе вебинара ["RestAssured"](https://disk.yandex.ru/d/OA86DvMnJqwYDw/GMT20220625-160149_Recording_1920x1080.mp4) 
+* **Artem Kot**
+
+## Acknowledgment
+
+* Thanks to John Orokoukvu for a demonstration of architectural patterns used for API testing in the ["RestAssured"](https://disk.yandex.ru/d/OA86DvMnJqwYDw/GMT20220625-160149_Recording_1920x1080.mp4) webinar. 
