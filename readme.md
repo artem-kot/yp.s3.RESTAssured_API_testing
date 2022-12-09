@@ -1,4 +1,4 @@
-# # Yandex.Praktikum 3rd Sprint's Project. "QA-Scooter"
+# Yandex.Praktikum 3rd Sprint's Project. "QA-Scooter"
 
 A set of automated API tests for ["Scooter"](https://qa-scooter.praktikum-services.ru/).
 Project's API design is stored in the document: ["Ez-scooter"](https://qa-scooter.praktikum-services.ru/docs/). 
