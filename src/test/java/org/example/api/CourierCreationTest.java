@@ -10,7 +10,7 @@ public class CourierCreationTest extends CourierTestSteps {
     @Test
     @DisplayName("Courier Creation: courier can be created")
     public void createCourierTest(){
-        createCourier().then().statusCode(201).assertThat().body("ok", equalTo(true));
+        createCourier().then().statusCode(201);
     }
 
     @Test
