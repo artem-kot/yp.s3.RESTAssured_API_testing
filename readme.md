@@ -33,14 +33,17 @@ Only main study project tasks were completed.
 * List of orders: **OrderListRequestingTest**
   * it is possible to get the list of orders.
 
-## Tests Execution
-
-Local environment preparation instruction is shared below.
-
 ### Prerequisites
 
 Prepare local environment according to the guide: ["Local development env"](https://practicum.yandex.ru/learn/qa-automation-engineer-java/courses/e2bf18c2-97c5-43f8-af20-80c52142e6f2/sprints/16356/topics/a1b6de5a-dd0d-418b-97ea-02258aa40b07/lessons/054c3a94-f4ee-46a4-8a5b-b5d373b9ada3/)
 Download the project, store in local repository and execute, using IDE IntelliJ IDEA.
+
+## Tests Execution
+
+To execute test cases use command:
+`mvn clean test`
+To generate web page with the test results use command:
+`mvn allure:serve`
 
 ### Additional Information
 
